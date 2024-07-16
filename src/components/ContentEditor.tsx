@@ -4,9 +4,8 @@ import TinyMCE from "./TinyMCE";
 export default function ContentEditor() {
   const [editorState, setEditorState] = useState<string>("");
 
-  const handleChangeEditor = (content: string, length: number) => {
+  const handleChangeEditor = (content: string) => {
     setEditorState(content);
-    // setCount(length);
   };
 
   return <TinyMCE value={editorState} onEditorChange={handleChangeEditor} />;

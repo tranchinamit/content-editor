@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Editor } from "@tinymce/tinymce-react";
 import { Editor as TinyMCEEditor } from "tinymce";
 
@@ -41,22 +39,15 @@ export function stripNewLines(value: string): string {
 
 export interface IProps {
   value: string;
-  onEditorChange: (value: string, charLength: number) => void;
+  onEditorChange: (value: string) => void;
   disabled?: boolean;
 }
 
 export default function TinyMCE(props: IProps) {
   const { value, onEditorChange, disabled } = props;
 
-  const handleOnEditorChange = (newValue: string, editor: TinyMCEEditor) => {
-    console.log("💊 ~ newValue:", newValue);
-    console.log("💊 ~ editor:", editor);
-    console.log("💊 ~ content:", editor.getContent({ format: "text" }));
-    console.log("💊 ~ content:", editor.getContent({ format: "text" })?.length);
-
-    const charLength = editor.getContent({ format: "text" })?.length ?? 0;
-
-    onEditorChange(newValue, charLength);
+  const handleOnEditorChange = (newValue: string, _editor: TinyMCEEditor) => {
+    onEditorChange(newValue);
   };
 
   return (
